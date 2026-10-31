@@ -2,8 +2,6 @@
 
 Repit watches a workout video, tracks your body with pose estimation, and counts every rep automatically. It flags partial reps, measures depth and range of motion for each rep, and speeds up rest periods so you can review your form in seconds.
 
-<p align="center"><img src="assets/demo.gif" alt="Repit counting squat reps with a pose overlay" width="260"></p>
-
 > Source code is private while Repit is in development as a startup. I'm happy to walk through the code and design in an interview.
 
 ## How it works
