@@ -9,19 +9,13 @@ Repit watches a workout video, tracks your body with pose estimation, and counts
 1. **Pose estimation:** MediaPipe tracks body keypoints in every frame.
 2. **Joint-angle signal:** The keypoints become a joint angle over time (knee angle for squats).
 3. **Calibration:** Repit learns *your* standing position instead of assuming a fixed angle. In the demo it calibrated to about 142°, compared with a 160° default.
-4. **Rep counting:** A rep counts only when you go from standing to depth (below 100° for squats) and back. Smoothing prevents jitter from producing false counts.
+4. **Rep counting:** A rep counts only when you go from standing to depth (below 100° for squats) and back. Smoothing keeps jitter from producing false counts.
 5. **Partial reps:** Dips that never reach depth are flagged as partial reps and are not counted.
 6. **Rest trimming:** Rest periods play at 8x speed and reps at 1x, so the form-review clip covers only the work.
 
-## The signal behind the demo
-
-![Knee angle over a squat set: shaded bands are counted reps, the red line is a partial rep](assets/knee-angle.png)
-
-Shaded bands are counted reps, and the red line marks a partial rep that was rejected. The green dashed line is the standing angle Repit calibrated for this lifter.
-
 ## Sample output
 
-Each set is saved as structured data ([full file](sample-output/squat.sets.json)):
+Each set is saved as structured data:
 
 ```json
 {
@@ -36,7 +30,7 @@ Each set is saved as structured data ([full file](sample-output/squat.sets.json)
 }
 ```
 
-For every rep Repit records the depth at the bottom, the range of motion and the duration. Slowing rep speed across the set is used as a fatigue indicator. A [speed map](sample-output/squat.speedmap.json) marks each segment as rep or rest for video playback.
+For every rep, Repit records the depth at the bottom, the range of motion and the duration. Slowing rep speed across the set serves as a fatigue indicator. A speed map marks each segment of the video as rep or rest for playback.
 
 ## Status
 
@@ -51,7 +45,7 @@ For every rep Repit records the depth at the bottom, the range of motion and the
 | Mobile app with on-device processing | In progress |
 | Progress analytics (volume, PRs, estimated 1RM) | In progress |
 | Local-first sync and automatic video compression | In progress |
-| Exercise classifier (RepCount, Countix, consented gym footage) | Planned |
+| Exercise classifier trained on pose keypoint sequences | Planned |
 
 ## Tech
 
